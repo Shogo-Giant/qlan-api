@@ -8,8 +8,8 @@ default: &default
 
 development:
   <<: *default
-  database: hachathon_e_app
+  database: qlan
 
 test:
   <<: *default
-  database: hachathon_e_app_test
+  database: qlan_test
