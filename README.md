@@ -27,8 +27,12 @@ docker-compose up
 ```
 
 ## 6. Railsが起動していることを確認
-```
 http://localhost:3001
+「Yay! You’re on Rails!」の画面が出ればOKです！（今のところ）
+
+## 7. docker-compose upの落としかた
+```
+control + c
 ```
 
 ## コンテナの中への入り方
