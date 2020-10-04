@@ -6,7 +6,7 @@ git clone git@github.com:kohemal/qlan-api.git
 
 ## 2. qlan-apiに移動
 ```
-cd clan-api
+cd qlan-api
 ```
 
 ## 3. docker環境の構築
