@@ -34,5 +34,18 @@ module Qlan_api
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.middleware.use ActionDispatch::Cookies
+    config.generators do |g|
+      # 不要なファイルを生成しない
+      g.test_framework :rspec,
+        fixtures: true,
+        view_specs: false,
+        helper_specs: true,
+        routing_specs: false,
+        controller_specs: true,
+        request_specs: false
+    
+      # テストデータのパス設定
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
+    end
   end
 end

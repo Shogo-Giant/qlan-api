@@ -30,7 +30,7 @@ docker-compose up
 http://localhost:3001
 「Yay! You’re on Rails!」の画面が出ればOKです！（今のところ）
 
-## 7. docker-compose upの落としかた
+## docker-compose upの落としかた
 ```
 control + c
 ```
@@ -39,8 +39,14 @@ control + c
 ```
 /qlan-api
 docker-compose exec web bash
+#bash-X.X と、bashに入れればOK！
 ```
 
+## テスト環境の作成
+```
+#bash-5.0  bundle exec rake db:test:clone
+
+```
 ## Sequel Proへの入り方
 ```
 ホスト：0.0.0.0
