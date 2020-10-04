@@ -16,3 +16,9 @@ group :development do
   gem 'ridgepole'
   gem 'annotate'
 end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+end
