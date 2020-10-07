@@ -15,6 +15,8 @@ group :development do
   gem 'listen'
   gem 'ridgepole'
   gem 'annotate'
+  gem 'faker'
+  gem 'pry-byebug'
 end
 
 group :development, :test do
