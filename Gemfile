@@ -17,6 +17,10 @@ group :development do
   gem 'annotate'
   gem 'faker'
   gem 'pry-byebug'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec'
 end
 
 group :development, :test do
