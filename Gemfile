@@ -9,6 +9,9 @@ gem 'puma'
 gem 'rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'activerecord-import'
+gem 'devise'
+gem 'devise_token_auth'
+gem 'rack-cors'
 
 
 group :development do
