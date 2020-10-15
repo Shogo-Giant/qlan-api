@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_105816) do
+ActiveRecord::Schema.define(version: 2020_10_15_115212) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -43,4 +43,27 @@ ActiveRecord::Schema.define(version: 2020_10_13_105816) do
     t.index ["uid", "provider"], name: "index_accounts_on_uid_and_provider", unique: true
   end
 
+  create_table "accounts_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.text "self_introduction"
+    t.string "image"
+    t.string "connection_email"
+    t.integer "sex"
+    t.date "birthday"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["account_id"], name: "index_accounts_profiles_on_account_id"
+  end
+
+  create_table "admin_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.string "name"
+    t.string "slack_name"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["account_id"], name: "index_admin_accounts_on_account_id"
+  end
+
+  add_foreign_key "accounts_profiles", "accounts"
+  add_foreign_key "admin_accounts", "accounts"
 end
