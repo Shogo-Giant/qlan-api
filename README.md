@@ -35,6 +35,26 @@ http://localhost:3001
 control + c
 ```
 
+## pushする前
+```
+rubocopの確認
+1. web bashに入る
+/qlan_api $ docker-compose exec web bash
+
+2. rubocopを実行
+bash-5.0# rubocop -a (ファイル名を指定すれば、そのファイルだけ実行してくれる)
+※ここでrubocopからなんらかのリファクタ推奨アラートが出ても、自動で整形されます
+
+3. 再度rubocopを実行して確認
+bash-5.0# rubocop -a（ファイル名）
+
+/myapp/.rubocop.yml: Warning: no department given for LineLength.
+Inspecting 1 files
+.
+
+上記になればOK
+```
+
 ## コンテナの中への入り方
 ```
 /qlan-api
