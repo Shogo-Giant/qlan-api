@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_115212) do
+ActiveRecord::Schema.define(version: 2020_10_15_234451) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 2020_10_15_115212) do
     t.index ["account_id"], name: "index_accounts_profiles_on_account_id"
   end
 
+  create_table "accounts_reactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "to_account_id"
+    t.bigint "from_account_id"
+    t.datetime "to_account_favorited_at"
+    t.datetime "from_account_favorited_at"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["from_account_id"], name: "index_accounts_reactions_on_from_account_id"
+    t.index ["to_account_id"], name: "index_accounts_reactions_on_to_account_id"
+  end
+
   create_table "admin_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.string "name"
@@ -65,5 +76,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_115212) do
   end
 
   add_foreign_key "accounts_profiles", "accounts"
+  add_foreign_key "accounts_reactions", "accounts", column: "from_account_id"
+  add_foreign_key "accounts_reactions", "accounts", column: "to_account_id"
   add_foreign_key "admin_accounts", "accounts"
 end
