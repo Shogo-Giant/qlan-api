@@ -38,6 +38,10 @@
 #  index_accounts_on_uid_and_provider      (uid,provider) UNIQUE
 #
 class Account < ActiveRecord::Base
+  validates :name,       presence: true
+  validates :email,      presence: true
+  validates :password,   presence: true
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
