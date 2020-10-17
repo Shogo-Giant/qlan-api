@@ -12,7 +12,7 @@ gem 'activerecord-import'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'rack-cors'
-
+gem 'annotate'
 
 group :development do
   gem 'listen'
