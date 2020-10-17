@@ -37,7 +37,7 @@ control + c
 
 ## pushする前
 ```
-rubocopの確認
+### rubocopの確認
 1. web bashに入る
 /qlan_api $ docker-compose exec web bash
 
@@ -51,6 +51,15 @@ bash-5.0# rubocop -a（ファイル名）
 /myapp/.rubocop.yml: Warning: no department given for LineLength.
 Inspecting 1 files
 .
+
+### anotateの確認(テーブル定義を変更した場合)
+1. web bashに入る
+/qlan_api $ docker-compose exec web bash
+
+2. anotateを実行
+bash-5.0# anotate
+
+変更したテーブル定義が対応するモデルにコメントアウト形式で表示されるのを確認する
 
 上記になればOK
 ```
