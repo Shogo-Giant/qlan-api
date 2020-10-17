@@ -21,5 +21,7 @@
 #  fk_rails_...  (account_id => accounts.id)
 #
 class AccountsProfile < ApplicationRecord
+  validates :sex, numericality: { only_integer: true }
+
   belongs_to :account
 end

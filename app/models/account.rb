@@ -17,7 +17,7 @@
 #  last_sign_in_ip        :string(255)
 #  name                   :string(255)
 #  namekana               :string(255)
-#  phone_number           :integer
+#  phone_number           :string(255)
 #  provider               :string(255)      default("email"), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -38,9 +38,10 @@
 #  index_accounts_on_uid_and_provider      (uid,provider) UNIQUE
 #
 class Account < ActiveRecord::Base
-  validates :name,       presence: true
-  validates :email,      presence: true
-  validates :password,   presence: true
+  validates :name,         presence: true, uniqueness: true
+  validates :email,        presence: true, uniqueness: true
+  validates :password,     presence: true
+  validates :user_id,      uniqueness: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

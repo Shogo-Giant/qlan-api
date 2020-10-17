@@ -13,12 +13,12 @@ gem 'devise'
 gem 'devise_token_auth'
 gem 'rack-cors'
 gem 'annotate'
+gem 'faker'
 
 group :development do
   gem 'listen'
   gem 'ridgepole'
   gem 'annotate'
-  gem 'faker'
   gem 'pry-byebug'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false

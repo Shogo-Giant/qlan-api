@@ -1,33 +1,31 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-require 'faker'
-
 addresses = [
-  { email:  'admin@qlan-inc.com', password: 'qlan2017', admin: true, },
-  { email:  'accounts001@qlan-inc.com', password: 'qlan2017', admin:  false, },
-  { email:  'accounts002@qlan-inc.com', password: 'qlan2017', admin:  false, },
-  { email:  'accounts003@qlan-inc.com', password: 'qlan2017', admin:  false, },
-  { email:  'accounts004@qlan-inc.com', password: 'qlan2017', admin:  false, },
-  { email:  'accounts005@qlan-inc.com', password: 'qlan2017', admin:  false, },
+  { email: 'admin@qlan-ac.jp', password: 'qlan2017' },
+  { email: 'accounts001@qlan-ac.jp', password: 'qlan2017' },
+  { email: 'accounts002@qlan-ac.jp', password: 'qlan2017' },
+  { email: 'accounts003@qlan-ac.jp', password: 'qlan2017' },
+  { email: 'accounts004@qlan-ac.jp', password: 'qlan2017' },
+  { email: 'accounts005@qlan-ac.jp', password: 'qlan2017' }
 ]
-addresses.each do |address|
+
+addresses.each.with_index(1) do |address, index|
   account = Account.find_by(email: address[:email])
   next if account.present?
-  account = Account.new(email: address[:email], password: address[:password])
-  AdminAccount.create!(account: account) if address[:admin]
-  AccountsProfile.find_or_create_by!(
-    account:               account,
-    name:                  Faker::Name.name,
-    self_introduction:     "self_introduction",
-    image:                 "",
-    connection_email:      Faker::Internet.email,
-    sex:                   %w(男 女)[rand(0..1)],
-    birthday:              Faker::Date.birthday(min_age: 18, max_age: 65),
+
+  account = Account.new(
+    name: "name#{index}",  phone_number: "0801234567#{index}",
+    email: address[:email], password: address[:password], user_id: "user_id#{index}"
   )
+  account.save!
+
+  accounts_profile = AccountsProfile.new(
+    account: account, birthday: "1998-0#{index}-0#{index}", sex: 1
+    connection_email: "connection_email#{index}@exa.com", self_introduction: 'self_introduction'
+  )
+  accounts_profile.save!
+
+  if account.email == 'admin@qlan-ac.jp'
+    AdminAccount.create!(
+      name: "admin_account", account: account
+    )
+  end
 end

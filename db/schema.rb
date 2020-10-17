@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_234451) do
     t.string "namekana"
     t.string "user_id"
     t.string "email"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.boolean "allow_password_change", default: false
